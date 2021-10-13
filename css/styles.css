@@ -1,0 +1,60 @@
+*{
+  font-family: arial,sans-serif;
+}
+
+#laud {
+  position: relative;
+  width: 108px;
+  height: 20px;
+  border-radius: 12px;
+  vertical-align: bottom;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 16px;
+  z-index: 10;
+  background-image: linear-gradient(to right, #70bd44, #5faf31);
+}
+
+
+
+.table{
+  position: absolute;
+  width: 108px;
+  text-align: center;
+  display: inline-block;
+  height: 50px;
+  border-radius: 3px;
+  border: 1px solid black;
+  vertical-align: center;
+  color: black;
+  font-size: 16px;
+  z-index: 10;
+  background-image: linear-gradient(to bottom, white, #c0c0c0);
+}
+
+div.dropper {
+	margin-left: 10px;
+	margin-top: 10px;
+	float: left;
+	height: 500px;
+	width: 700px;
+	background: #E0E0E0;
+}
+
+
+.AddButton{
+  position: absolute;
+  width: 40px;
+  text-align: center;
+  top: 37px;
+  left: 230px;
+  display: inline-block;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid black;
+  vertical-align: center;
+  color: black;
+  font-size: 16px;
+  z-index: 10;
+  background-image: linear-gradient(to bottom, white, #c0c0c0);
+}
