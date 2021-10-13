@@ -5,16 +5,6 @@ require_once 'database.php';
 require_once 'tableinfo.php';
 
 $my_set = new Ob_table_Settings();
-echo '<html>
-<head>
-<title></title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<link rel="stylesheet" href="css/styles.css" type="text/css">
-<script language="JavaScript" type="text/javascript" src="js/dyn.js"> </script>
-<script type="text/javascript" src="js/MooTools-Core-1.6.0.js"> </script>
-</head>
-<body text="#000000" onload=lauadReady()>';
-
 
 $my_db =  new myDB( $my_set->host, $my_set->username,  $my_set->password , $my_set->database );
 
@@ -24,8 +14,6 @@ if ( (isset ($_REQUEST['op'])) && ( $_REQUEST['op']=='delTbl' ) &&
 {
   $my_db -> DeleteTable($_REQUEST['tblId']);
 }
-
-
 
 $aFloorList = $my_db -> GetFloorList();
 
@@ -40,10 +28,29 @@ if ( (isset ($_REQUEST['fl'])) && ( strlen($_REQUEST['fl'])>0 )  ){
   }
 
 }
+
 $aTableList = $my_db -> GetTableList($currentFloorId);
 $tbl_info = new TableInfo();
 $tbl_info	-> setData($aTableList);
 // echo $tbl_info -> getHTML();
+$image = $my_db -> GetImage($currentFloorId);
+
+header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
+
+echo '<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<link rel="stylesheet" href="css/styles.css" type="text/css">
+<script language="JavaScript" type="text/javascript" src="js/dyn.js"> </script>
+<script type="text/javascript" src="js/MooTools-Core-1.6.0.js"> </script>
+</head>
+<body text="#000000" onload=lauadReady()>';
+
 
 echo '<table border="0">';
 echo '<tr> <td> ';

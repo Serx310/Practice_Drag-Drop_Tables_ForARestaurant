@@ -141,6 +141,18 @@ function MyVarchar ( $sIn )
          return     $this->m_mysqli->real_escape_string( $sIn );
     }
 
+function GetImage($floorId){
+
+   $sSql = "SELECT IMAGE FROM FLOORS where ID =".$this->MyVarchar($floorId);
+
+   $this->m_sth = $this->m_mysqli->query( $sSql );
+
+  if  ( $row = $this->m_sth->fetch_assoc()  )
+  {
+     file_put_contents('saal.jpg', $row['IMAGE']);
+  }
+
+}
 
 }
  ?>
