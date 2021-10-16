@@ -41,8 +41,8 @@ class TableInfo{
       $sHtMl .= '</table>';
     return $sHtMl;
   }
-  function getTableHTML(){
-      $sHTML = '<div class="dropper" id="dropzone" ondrop="drop_handler(event)" ondragover="dragover_handler(event)">';
+  function getTableHTML($currentFloorId){
+      $sHTML = '<div class="dropper" id="dropzone" ondrop="drop_handler(event)" ondragover="dragover_handler(event)" style="background-image: url(image.php?fl='.$currentFloorId.')">';
 
          for($i=0; $i < $this->m_aTblDetails['count']; $i++){
            	$sHTML .= '<div id="'.$this->m_aTblDetails[$i]["ID"].'" class="table" ';

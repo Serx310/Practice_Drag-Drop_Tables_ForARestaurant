@@ -154,5 +154,18 @@ function GetImage($floorId){
 
 }
 
+function GetImgBLOB($floorId){
+
+   $sSql = "SELECT IMAGE FROM FLOORS where ID =".$this->MyVarchar($floorId);
+
+   $this->m_sth = $this->m_mysqli->query( $sSql );
+
+  if  ( $row = $this->m_sth->fetch_assoc()  )
+  {
+     return $row['IMAGE'];
+  }
+
+}
+
 }
  ?>

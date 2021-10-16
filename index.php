@@ -77,7 +77,7 @@ echo 'NEW</div> </td> </tr>';
 echo '<tr> <td>';
 
 $tbl_info	-> setOffset(80);
-echo $tbl_info -> getTableHTML();
+echo $tbl_info -> getTableHTML($currentFloorId);
 echo '</td> </tr>';
 echo '<tr> <td>';
 echo $tbl_info -> getHTML();
