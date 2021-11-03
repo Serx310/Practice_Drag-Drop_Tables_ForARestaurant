@@ -9,6 +9,8 @@ class Ob_table_Settings
        var $username = "root";
        var $password = "";
        var $database = "kassa";
+
+       var $lang = "RUS";
 }
 
 

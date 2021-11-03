@@ -1,12 +1,19 @@
 
 <?php
-class TableInfo{
 
+require_once 'settings.php';
+require_once 'database.php';
+class TableInfo{
+  var $m_lang;
   var $m_aTblDetails = array();
   var $m_vOffset = 0;
 
   function setData($a){
     $this->m_aTblDetails = $a;
+  }
+
+  function setLang($l){
+    $this->m_lang = $l;
   }
   function setOffset($v){
     $this->m_vOffset = $v;
@@ -15,15 +22,15 @@ class TableInfo{
       $sHtMl = '<table border="1" cellspacing="0" cellpadding="3">
 
       <tr>
-      <th>Table Number</th>
+      <th>'.$this->m_lang->tblNum.'</th>
 
-      <th>Name</th>
+      <th>'.$this->m_lang->name.'</th>
 
       <th>X</th>
 
       <th>Y</th>
 
-      <th>OPERATION</th>
+      <th>'.$this->m_lang->operation.'</th>
 
       </tr>';
 
@@ -35,7 +42,7 @@ class TableInfo{
         $sHtMl .= '<td> <input type="text" id="NAME_'.$this->m_aTblDetails[$i]['ID'].'" value ="'.htmlspecialchars( $this->m_aTblDetails[$i]['NAME']).'" style="text-align:center;" onkeydown="myKeyDown(event, 1,\'' .$this->m_aTblDetails[$i]['ID']. '\');" autocomplete="off" /></td>';
         $sHtMl .= '<td> <input type="text" id="X_'.$this->m_aTblDetails[$i]['ID'].'" value = '.$this->m_aTblDetails[$i]['X'].' style="text-align:center;" onkeydown="myKeyDown(event, 2,\'' .$this->m_aTblDetails[$i]['ID']. '\');" autocomplete="off"/></td>';
         $sHtMl .= '<td> <input type="text" id="Y_'.$this->m_aTblDetails[$i]['ID'].'" value = '.$this->m_aTblDetails[$i]['Y'].' style="text-align:center;" onkeydown="myKeyDown(event, 3,\'' .$this->m_aTblDetails[$i]['ID']. '\');" autocomplete="off"/></td>';
-        $sHtMl .= '<td align="center"> <a href="index.php?op=delTbl&tblId='.$this->m_aTblDetails[$i]['ID'].'" style="text-decoration: none; color: red;">DELETE</a></td>';
+        $sHtMl .= '<td align="center"> <a href="index.php?op=delTbl&tblId='.$this->m_aTblDetails[$i]['ID'].'" style="text-decoration: none; color: red;">'.$this->m_lang->del.'</a></td>';
         $sHtMl .= '<tr>';
       }
       $sHtMl .= '</table>';

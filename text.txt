@@ -4,3 +4,12 @@ SELECT ID, NAME, X, Y, FLOOR FROM PLACES WHERE FLOOR = '0'
 SELECT ID, NAME, X, Y, FLOOR FROM PLACES WHERE FLOOR = '0'
 
 SELECT ID, NAME, X, Y, FLOOR FROM PLACES WHERE FLOOR = '0' order by NAME
+http://localhost/ ob_tables/ image.php
+
+http://localhost/ob_tables/image.php?fl=0
+
+fl=435f9256-df1f-4a2f-a2fd-76d140c65c1e //saal 2
+
+http://localhost/ob_tables/index.php?fl=435f9256-df1f-4a2f-a2fd-76d140c65c1e
+
+http://localhost/ob_tables/image.php?fl=435f9256-df1f-4a2f-a2fd-76d140c65c1e

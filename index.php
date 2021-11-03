@@ -6,6 +6,10 @@ require_once 'tableinfo.php';
 
 $my_set = new Ob_table_Settings();
 
+require_once( './langs/lang'.$my_set->lang.'.php' );
+
+$my_lang = new DisplayLang();
+
 $my_db =  new myDB( $my_set->host, $my_set->username,  $my_set->password , $my_set->database );
 
 if ( (isset ($_REQUEST['op'])) && ( $_REQUEST['op']=='delTbl' ) &&
@@ -32,6 +36,7 @@ if ( (isset ($_REQUEST['fl'])) && ( strlen($_REQUEST['fl'])>0 )  ){
 $aTableList = $my_db -> GetTableList($currentFloorId);
 $tbl_info = new TableInfo();
 $tbl_info	-> setData($aTableList);
+$tbl_info -> setLang($my_lang);
 // echo $tbl_info -> getHTML();
 $image = $my_db -> GetImage($currentFloorId);
 
@@ -40,7 +45,7 @@ header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
 
 echo '<html>
 <head>
-<title></title>
+<title>'.$my_lang -> title.'</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
@@ -73,7 +78,7 @@ echo '<div id="addTbl" class="AddButton" onclick="AddNewTbl();">';
 echo '+</div>';
 echo '<div id="tblNew" class="table" ';
 echo ' draggable="true" ondragstart="dragstart_handler(event)" style="top:37px; left:300px; visibility: hidden;">';
-echo 'NEW</div> </td> </tr>';
+echo $my_lang -> new.'</div> </td> </tr>';
 echo '<tr> <td>';
 
 $tbl_info	-> setOffset(80);
