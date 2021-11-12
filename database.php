@@ -43,6 +43,8 @@ class myDb
       return $aRet;
   }
 
+
+
   function GetTableList ( $floorId = '0' )
      {
          $iCount = 0;
@@ -117,6 +119,14 @@ function getUUID()
 
 function DeleteTable($tblId){
   $del = "DELETE FROM PLACES WHERE ID=".$this->MyVarchar($tblId)."";
+  if(! $this->m_mysqli->query( $del ) )
+        {
+           echo "[oberror: ".$sSql."<br>".$this->m_mysqli->error."]";
+        }
+}
+
+function DeleteAllTables($flId){
+  $del = "DELETE FROM PLACES WHERE FLOOR=".$this->MyVarchar($flId)."";
   if(! $this->m_mysqli->query( $del ) )
         {
            echo "[oberror: ".$sSql."<br>".$this->m_mysqli->error."]";

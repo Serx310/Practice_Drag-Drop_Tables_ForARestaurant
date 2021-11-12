@@ -8,6 +8,7 @@ class DisplayLang extends BaseLang{
   var $floor = "Зал";
   var $del = "УДАЛИТЬ";
   var $new = "НОВЫЙ";
+  var $delAll = "УДАЛИТЬ ВСЕ СТОЛЫ";
 }
 
 ?>

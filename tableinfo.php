@@ -3,10 +3,16 @@
 
 require_once 'settings.php';
 require_once 'database.php';
+
+
+
 class TableInfo{
   var $m_lang;
+  var $m_floor;
   var $m_aTblDetails = array();
   var $m_vOffset = 0;
+
+
 
   function setData($a){
     $this->m_aTblDetails = $a;
@@ -18,7 +24,14 @@ class TableInfo{
   function setOffset($v){
     $this->m_vOffset = $v;
   }
+  function setFloor($f){
+    $this->m_floor = $f;
+  }
+
   function getHTML(){
+
+
+
       $sHtMl = '<table border="1" cellspacing="0" cellpadding="3">
 
       <tr>
@@ -42,9 +55,10 @@ class TableInfo{
         $sHtMl .= '<td> <input type="text" id="NAME_'.$this->m_aTblDetails[$i]['ID'].'" value ="'.htmlspecialchars( $this->m_aTblDetails[$i]['NAME']).'" style="text-align:center;" onkeydown="myKeyDown(event, 1,\'' .$this->m_aTblDetails[$i]['ID']. '\');" autocomplete="off" /></td>';
         $sHtMl .= '<td> <input type="text" id="X_'.$this->m_aTblDetails[$i]['ID'].'" value = '.$this->m_aTblDetails[$i]['X'].' style="text-align:center;" onkeydown="myKeyDown(event, 2,\'' .$this->m_aTblDetails[$i]['ID']. '\');" autocomplete="off"/></td>';
         $sHtMl .= '<td> <input type="text" id="Y_'.$this->m_aTblDetails[$i]['ID'].'" value = '.$this->m_aTblDetails[$i]['Y'].' style="text-align:center;" onkeydown="myKeyDown(event, 3,\'' .$this->m_aTblDetails[$i]['ID']. '\');" autocomplete="off"/></td>';
-        $sHtMl .= '<td align="center"> <a href="index.php?op=delTbl&tblId='.$this->m_aTblDetails[$i]['ID'].'" style="text-decoration: none; color: red;">'.$this->m_lang->del.'</a></td>';
-        $sHtMl .= '<tr>';
+        $sHtMl .= '<td align="center"> <a href="index.php?op=delTbl&tblId='.$this->m_aTblDetails[$i]['ID'].'&fl='.$this->m_floor.'" style="text-decoration: none; color: red;">'.$this->m_lang->del.'</a></td>';
+        $sHtMl .= '</tr>';
       }
+      $sHtMl .= '<tr> <td align="center" colspan = "5"><a href="index.php?op=delAllTbl&fl='.$this->m_floor.'" style="text-decoration: none; color: red;">'.$this->m_lang->delAll.' </a></td></tr>';
       $sHtMl .= '</table>';
     return $sHtMl;
   }

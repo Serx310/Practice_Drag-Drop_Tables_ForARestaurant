@@ -19,6 +19,13 @@ if ( (isset ($_REQUEST['op'])) && ( $_REQUEST['op']=='delTbl' ) &&
   $my_db -> DeleteTable($_REQUEST['tblId']);
 }
 
+if ( (isset ($_REQUEST['op'])) && ( $_REQUEST['op']=='delAllTbl' ) &&
+
+ (isset ($_REQUEST['fl'])) && ( strlen($_REQUEST['fl'])>0 ) )
+{
+  $my_db -> DeleteAllTables($_REQUEST['fl']);
+}
+
 $aFloorList = $my_db -> GetFloorList();
 
 
@@ -37,8 +44,10 @@ $aTableList = $my_db -> GetTableList($currentFloorId);
 $tbl_info = new TableInfo();
 $tbl_info	-> setData($aTableList);
 $tbl_info -> setLang($my_lang);
+$tbl_info -> setFloor($currentFloorId);
 // echo $tbl_info -> getHTML();
 $image = $my_db -> GetImage($currentFloorId);
+
 
 header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
